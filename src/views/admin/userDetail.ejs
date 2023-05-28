@@ -1,0 +1,82 @@
+<%- include('../partials/adminHeader.ejs') %>
+
+<div style="padding: 1em"></div>
+
+<div style="display: flex; align-items: center; flex-direction: column"></div>
+<div style="display: flex; font-size: 1.2em">
+  <div style="width: 50%">
+    <div class="container">
+      <h1>User Detail</h1>
+      <hr />
+      <h2><%= user.name %> (<%= user.type %>)</h2>
+      <% if (user.type == 'teacher') { %>
+
+      <div><strong>Qualification:</strong> <%= user.qualification %></div>
+      <div><strong>Institute:</strong> <%= user.institute %></div>
+      <div><strong>Department:</strong> <%= user.department %></div>
+      <div><strong>Designation:</strong> <%= user.designation %></div>
+      <div><strong>Postal Code:</strong> <%= user.pincode %></div>
+      <div><strong>City:</strong> <%= user.city %></div>
+      <div><strong>State:</strong> <%= user.state %></div>
+      <div><strong>Country:</strong> <%= user.country %></div>
+      <div><strong>Email:</strong> <%= user.email %></div>
+      <div><strong>Phone:</strong> <%= user.phone %></div>
+
+      <div>
+        <strong>Instructor Profile:</strong> <%= user.profile ? user.profile :
+        'N/A' %>
+      </div>
+      <% } else { %>
+      <div><strong>Father's Name:</strong> <%= user.fatherName %></div>
+      <div><strong>Age:</strong> <%= age %> Years Old</div>
+      <div><strong>Class:</strong> <%= user.class %></div>
+      <div><strong>Institute:</strong> <%= user.institute %></div>
+      <div><strong>House:</strong> <%= user.house %></div>
+      <div><strong>Street No.:</strong> <%= user.street %></div>
+      <div><strong>Postal Code:</strong> <%= user.pincode %></div>
+      <div><strong>City:</strong> <%= user.city %></div>
+      <div><strong>State:</strong> <%= user.state %></div>
+      <div><strong>Country:</strong> <%= user.country %></div>
+      <div><strong>Email:</strong> <%= user.email %></div>
+      <div><strong>Phone:</strong> <%= user.phone %></div>
+      <% } %>
+    </div>
+  </div>
+  <div style="width: 50%">
+    <div class="ncontainer">
+      <h1>Courses <%= user.type == 'teacher' ? 'Created' : 'Purchased' %></h1>
+      <hr />
+      <% courses.forEach(course => { %>
+      <a href="/course/<%= course.id %>">
+        <div
+          class="card"
+          style="
+            margin: 2em 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <div>
+            <h3><%= course.name %></h3>
+            <div style="margin-bottom: 0.5em">
+              <h5>(<%= course.code %>)</h5>
+            </div>
+            <div>By <%= course.instructorName %></div>
+            <div><%= course.level %> Course</div>
+            <div>
+              <%= course.certification ? 'Certificate Available' : `Certificate
+              Not Available` %>
+            </div>
+          </div>
+          <div>
+            <div><%= course.credit %> credits</div>
+            <div><%= course.duration %> weeks</div>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer.ejs') %>

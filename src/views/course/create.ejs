@@ -1,0 +1,194 @@
+<%- include('../partials/header.ejs') %>
+<script src="/public/js/form.js"></script>
+<div class="ncontainer">
+  <div class="card">
+    <h3>Create Course</h3>
+    <h4>Instruction Regarding Creation Of Course</h4>
+    <div
+      style="
+        border: 1px solid;
+        border-radius: 5px;
+        padding: 5px 20px;
+        margin-bottom: 5px;
+      "
+    >
+      <ul>
+        <li>Course is divided into Blocks, Unit, and Topics</li>
+        <li>Unit is where you lectures and document will be</li>
+        <li>Topic are the contents of the unit</li>
+        <li>Credit needs to assigned based on the duration of the course</li>
+        <li>
+          Course will be reviewed by our adminstrator before being published
+        </li>
+        <li>
+          You need to pay Course Creation Fees after your course has been
+          approved
+        </li>
+        <li>Course Creation Fees will be ₹500 per credit</li>
+        <li>
+          You'll have to pay course creation fees after your course has been
+          approved
+        </li>
+      </ul>
+    </div>
+
+    <form method="post" class="form">
+      <!-- name -->
+      <div class="form-group">
+        <label for="name">Course Name:</label>
+        <input type="text" name="name" id="name" value="<%= name %>" required />
+      </div>
+      <!-- code -->
+      <div class="form-group">
+        <label for="code">Course Code:</label>
+        <input type="text" name="code" id="code" value="<%= code %>" required />
+      </div>
+      <!-- course credit -->
+      <div class="form-group">
+        <label for="credit">Course Credit:</label>
+        <select name="credit" id="credit" value="<%= credit %>" required>
+          <option value="">-- Please select an option --</option>
+          <option value="2">2 - credit</option>
+          <option value="3">3 - credit</option>
+          <option value="4">4 - credit</option>
+        </select>
+      </div>
+      <!-- course level -->
+      <div class="form-group">
+        <label for="level">Course level:</label>
+        <select name="level" id="level" value="<%= level %>" required>
+          <option value="">-- Please select an option --</option>
+          <option value="High School">High School</option>
+          <option value="Intermedediate">Intermedediate</option>
+          <option value="Diploma">Diploma</option>
+          <option value="UG">UG</option>
+          <option value="PG">PG</option>
+          <option value="PG Diploma">PG Diploma</option>
+        </select>
+      </div>
+      <!-- duration -->
+      <div class="form-group">
+        <label for="duration">Course Duration(in weeks):</label>
+        <input
+          type="number"
+          name="duration"
+          id="duration"
+          value="<%= duration %>"
+          required
+        />
+      </div>
+      <!-- RFees -->
+      <div class="form-group">
+        <label for="rfees">Registration Fees:</label>
+        <input
+          type="number"
+          name="rFees"
+          id="rFees"
+          value="<%= rfees %>"
+          required
+        />
+      </div>
+      <!-- certification required -->
+      <div class="form-group">
+        <label for="certification"
+          >Certification Required:
+          <input type="checkbox" name="certification" id="certification"
+        /></label>
+      </div>
+      <!-- CFees -->
+      <div class="form-group">
+        <label for="cfees">Certification Fees:</label>
+        <input type="number" name="cFees" id="cFees" />
+      </div>
+      <!-- description -->
+      <div class="form-group">
+        <label for="description">Course Description:</label>
+        <textarea name="description" id="description" cols="30" rows="10">
+<%= description %></textarea
+        >
+      </div>
+      <!-- structure -->
+      <div class="form-group">
+        <label>Course Structure:</label>
+      </div>
+      <div class="form-block">
+        <div class="form-group">
+          <div>
+            <button type="button" class="removeForm" onclick="removeItem(this)">
+              -
+            </button>
+            <label for="block-1">Block Name:</label>
+          </div>
+          <input type="text" name="block-1" id="block-1" />
+
+          <div class="form-unit">
+            <div class="form-group">
+              <div>
+                <button
+                  type="button"
+                  class="removeForm"
+                  onclick="removeItem(this)"
+                >
+                  -
+                </button>
+                <label for="block-1-unit-1">Unit Name:</label>
+              </div>
+              <input type="text" name="block-1-unit-1" id="block-1-unit-1" />
+
+              <div class="form-topic">
+                <div class="form-group">
+                  <div>
+                    <button
+                      type="button"
+                      class="removeForm"
+                      onclick="removeItem(this)"
+                    >
+                      -
+                    </button>
+                    <label for="block-1-unit-1-topic-1">Topic Name:</label>
+                  </div>
+                  <input
+                    type="text"
+                    name="block-1-unit-1-topic-1"
+                    id="block-1-unit-1-topic-1"
+                  />
+                </div>
+                <button
+                  type="button"
+                  id="addTopicButton"
+                  class="btn"
+                  onclick="addTopic(this)"
+                >
+                  Add Topic
+                </button>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="addUnitButton"
+              class="btn"
+              onclick="addUnit(this)"
+            >
+              Add Unit
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          id="addBlockButton"
+          class="btn"
+          onclick="addBlock(this)"
+        >
+          Add Block
+        </button>
+      </div>
+      <% if (error) { %>
+      <p class="form-error"><%= error %></p>
+      <% } %>
+      <input type="submit" value="Create Course" class="btn" />
+    </form>
+  </div>
+</div>
+
+<script src="/public/js/courseForm.js"></script>
+<%- include('../partials/footer.ejs') %>

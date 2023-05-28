@@ -1,0 +1,122 @@
+<%- include('../partials/header.ejs') %>
+
+<div style="padding: 1em"></div>
+<% if (!course.isApproved) { %>
+<h4 style="text-align: center">Course not approved yet</h4>
+<% } else if (course.isApproved && !course.isPaid) { %>
+<h4 style="text-align: center">You haven't paid course creation fees</h4>
+<% } %>
+<div style="display: flex; align-items: center; flex-direction: column">
+  <% if (instructor) { %>
+  <div style="display: flex; gap: 2em">
+    <form method="post" action="/course/publish">
+      <input type="hidden" name="id" value="<%= course.id %>" />
+      <input style="font-size: 1.1rem" class="btn" type="submit" value="<%=
+      course.publish ? 'Unpublish' : 'Publish' %>" <%= course.isApproved &&
+      course.isPaid ? '' : 'disabled' %> />
+    </form>
+    <% if (!course.isPaid && course.isApproved) { %>
+    <form method="post" action="/checkoutCourse">
+      <input type="hidden" name="id" value="<%= course.id %>" />
+      <input
+        style="font-size: 1.1rem"
+        class="btn"
+        type="submit"
+        value="Pay Creation Fees"
+        <
+      />
+    </form>
+    <% } %>
+  </div>
+  <% } %>
+</div>
+<div style="display: flex; font-size: 1.2em">
+  <div style="width: 50%">
+    <div class="container">
+      <h1>Course Detail</h1>
+      <hr />
+      <h2><%= course.name %> (<%= course.code %>)</h2>
+      <div><strong>Instructor:</strong> <%= course.instructorName %></div>
+      <div><strong>Course UID:</strong> <%= course.id %></div>
+      <div><strong>Course Level:</strong> <%= course.level %></div>
+      <div><strong>Course Credit:</strong> <%= course.credit %></div>
+      <div><strong>Course Duration:</strong> <%= course.duration %> weeks</div>
+      <div>
+        <strong>Certificate Availabe:</strong> <%= course.certification ? 'yes'
+        : 'no' %>
+      </div>
+      <div>
+        <strong>Registration Fees:</strong> &#8377;<%= course.registrationFees
+        %>
+      </div>
+      <% if (course.certification) { %>
+      <div>
+        <strong>Certificate Fees:</strong> &#8377;<%= course.certificateFees %>
+      </div>
+      <% } %>
+      <div>
+        <strong>Course Description:</strong> <%= course.description ?
+        course.description : 'N/A' %>
+      </div>
+      <div><strong>Last Updated At:</strong> <%= duration %> ago</div>
+      <% if (needsToBuy) { %>
+      <br />
+      <hr />
+      <h3>You haven't bought this course yet!</h3>
+      <form action="/checkout" method="post">
+        <% if (course.certification) { %>
+        <p>
+          Certificate is provided by the Instructor, after completing the course
+          and finishing evaluation, you can find more about it by contacting the
+          Instructor
+        </p>
+        <br />
+        Apply for certificate: <br />
+        <label for="yes">Accept:</label>
+        <input type="radio" name="certification" id="yes" value="yes" />
+        <label for="no">Reject:</label>
+        <input type="radio" name="certification" id="no" value="no" checked />
+        <br /><br />
+        <% } %>
+        <input type="hidden" name="id" value="<%= course.id %>" />
+        <input type="submit" class="btn" value="Buy Course" />
+      </form>
+      <% } %> <% if (!certificateBought) { %>
+      <br />
+      <hr />
+      <p>
+        Certificate is provided by the Instructor, after completing the course
+        and finishing evaluation, you can find more about it by contacting the
+        Instructor
+      </p>
+      <form action="/checkout" method="post">
+        <input type="hidden" name="id" value="<%= course.id %>" />
+        <input type="hidden" name="bought" value="yes" />
+        <input type="submit" class="btn" value="Apply for certificate" />
+      </form>
+      <% } %>
+    </div>
+  </div>
+  <div style="width: 50%">
+    <div class="ncontainer">
+      <h1>Syllabus</h1>
+      <hr />
+      <% structure.forEach(block => { %>
+      <div class="block">
+        <h2><%= block.block.ordering %> - <%= block.block.name %></h2>
+        <% if (block.children) { %> <% block.children.forEach(unit => { %>
+        <a href="/unit/<%= unit.unit.id %>">
+          <div class="unit">
+            <h3><%= unit.unit.ordering %> - <%= unit.unit.name %></h3>
+            <% if (unit.children) { %> <% unit.children.forEach(topic => { %>
+            <div class="topic"><%= topic.ordering %> - <%= topic.name %></div>
+            <% }) %>
+          </div>
+        </a>
+        <% } %> <% }) %>
+      </div>
+      <% } %> <% }) %>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer.ejs') %>

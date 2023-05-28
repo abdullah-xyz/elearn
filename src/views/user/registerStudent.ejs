@@ -1,0 +1,148 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="ncontainer">
+  <div class="card single">
+    <h3>Register Student</h3>
+    <form method="post" class="form">
+      <!-- name -->
+      <div class="form-group">
+        <label for="name">Student's Name:</label>
+        <input type="text" name="name" id="name" value="<%= name %>" required />
+      </div>
+      <!-- father's name -->
+      <div class="form-group">
+        <label for="fatherName">Father's Name:</label>
+        <input
+          type="text"
+          name="fatherName"
+          id="fatherName"
+          value="<%= fatherName %>"
+          required
+        />
+      </div>
+      <!-- father's name -->
+      <div class="form-group">
+        <label for="dob">Student's DOB:</label>
+        <input type="date" name="dob" id="dob" value="<%= dob %>" required />
+      </div>
+      <!-- class -->
+      <div class="form-group">
+        <label for="studentClass">Class/Program:</label>
+        <input
+          type="text"
+          name="studentClass"
+          id="studentClass"
+          value="<%= studentClass %>"
+          required
+        />
+      </div>
+      <!-- institute -->
+      <div class="form-group">
+        <label for="institute">*Institute:</label>
+        <input
+          type="text"
+          name="institute"
+          id="institute"
+          value="<%= institute %>"
+        />
+      </div>
+      <!-- house no. -->
+      <div class="form-group">
+        <label for="house">House No:</label>
+        <input
+          type="text"
+          name="house"
+          id="house"
+          value="<%= house %>"
+          required
+        />
+      </div>
+      <!-- street -->
+      <div class="form-group">
+        <label for="street">Street:</label>
+        <input
+          type="text"
+          name="street"
+          id="street"
+          value="<%= street %>"
+          required
+        />
+      </div>
+      <!-- country -->
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <select name="country" id="country" value="<%= country %>" required>
+          <option value="">--Please choose an option--</option>
+          <% countries.forEach((country) => {%>
+          <option value="<%= country.isoCode %>"><%= country.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <!-- state -->
+      <div class="form-group">
+        <label for="state">State:</label>
+        <select name="state" id="state" disabled required>
+          <option value="">--Please choose an option--</option>
+        </select>
+      </div>
+      <!-- city -->
+      <div class="form-group">
+        <label for="city">City:</label>
+        <select name="city" id="city" disabled required>
+          <option value="">--Please choose an option--</option>
+        </select>
+      </div>
+      <!-- pincode -->
+      <div class="form-group">
+        <label for="pincode">Pincode:</label>
+        <input
+          type="number"
+          name="pincode"
+          id="pincode"
+          value="<%= pincode %>"
+          required
+        />
+      <!-- phone -->
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input
+          type="number"
+          name="phone"
+          id="phone"
+          value="<%= phone %>"
+          required
+        />
+      </div>
+      <!-- email -->
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value="<%= email %>"
+          required
+        />
+      </div>
+      <!-- password -->
+      <div class="form-group">
+        <label for="name">Password:</label>
+        <input type="password" name="password" id="password" required />
+      </div>
+      <!-- error -->
+      <% if (error) { %>
+      <p class="form-error"><%= error %></p>
+      <% } %>
+      <span style="font-size: 0.8em; margin-bottom: 1em; color: darkgreen"
+        >* Optional</span
+      >
+      <input type="submit" value="Sign Up" class="btn" />
+    </form>
+    <a href="/register/teacher" class="form-link">Register as a teacher</a>
+  </div>
+</div>
+
+<script src="/public/js/country.js"></script>
+
+
+<%- include('../partials/footer.ejs') %>

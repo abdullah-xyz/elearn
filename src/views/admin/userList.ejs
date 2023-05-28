@@ -1,0 +1,68 @@
+<%- include('../partials/adminHeader.ejs') %>
+
+<div class="ncontainer" style="margin-top: 2em">
+  <h3>Registered Teachers</h3>
+  <hr />
+  <br />
+  <div class="card-list">
+    <% teachers.forEach(teacher => { %>
+    <a href="/admin/user/<%= teacher.id %>">
+      <div
+        class="card"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <h3><%= teacher.name %></h3>
+          <div><%= teacher.designation %></div>
+          <div><%= teacher.qualification %></div>
+          <div><%= teacher.institute %></div>
+          <div><%= teacher.department %></div>
+        </div>
+        <div>
+          <div><%= teacher.email %></div>
+          <div><%= teacher.phone %></div>
+        </div>
+      </div>
+    </a>
+    <% }) %>
+  </div>
+
+  <br />
+
+  <h3>Registered Students</h3>
+  <hr />
+  <br />
+  <div class="card-list">
+    <% students.forEach(student => { %>
+    <a href="/admin/user/<%= student.id %>">
+      <div
+        class="card"
+        style="
+          margin: 2em 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <h3><%= student.name %></h3>
+          <div>S/O <%= student.fatherName %></div>
+          <div><%= student.class %></div>
+          <div><%= student.institute %></div>
+          <div><%= student.department %></div>
+        </div>
+        <div>
+          <div><%= student.email %></div>
+          <div><%= student.phone %></div>
+        </div>
+      </div>
+    </a>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

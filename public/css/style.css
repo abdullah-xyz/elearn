@@ -1,0 +1,424 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100%;
+}
+
+.header {
+  width: 100%;
+  background-color: #0c4b33;
+  /* padding: 10px; */
+  height: 10vh;
+  display: flex;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.ncontainer {
+  width: 80%;
+  margin: auto;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-header li {
+  border-right: 1px solid white;
+  text-align: center;
+  margin: 0 2em;
+}
+
+.admin-header li:last-child {
+  border: none;
+}
+
+.logo h1 {
+  color: #ffffff;
+  font-weight: normal;
+  font-size: 2.5rem;
+}
+
+nav li {
+  display: none;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+nav input,
+nav a {
+  text-decoration: none;
+  border: none;
+  background-color: #0c4b33;
+  color: #f1fff7;
+  font-size: 1.25rem;
+  padding-right: 1.5em;
+}
+
+nav input:hover,
+nav a:hover {
+  color: #44b78b;
+  cursor: pointer;
+}
+
+.toggle-nav {
+  color: #f1fff7;
+  font-size: 1.25rem;
+}
+
+.toggle-nav:hover {
+  color: #44b78b;
+  cursor: pointer;
+}
+
+.responsive {
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  width: 100%;
+  background-color: #0c4b33;
+  padding-left: 10%;
+}
+
+.responsive li {
+  display: block;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+}
+
+.single {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.card {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.75);
+  padding: 1em;
+}
+
+.card-over {
+  display: flex;
+  flex-direction: row;
+  height: 230px;
+  overflow: hidden;
+}
+
+.card .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  color: #0c4b33;
+}
+
+.card .price {
+  font-size: 1.25rem;
+  font-weight: 300;
+  padding-bottom: 2rem;
+}
+
+.right {
+  margin-left: 1em;
+}
+
+.lesson-card {
+  margin: 1em 0 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.details .title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+.form-error {
+  color: red;
+  font-size: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  /* font-size: 1.1rem; */
+  margin-bottom: 0.8em;
+}
+
+.form input,
+.form textarea,
+.form select {
+  font-size: 1em;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  border-color: #0c4b33;
+  outline: none;
+}
+
+.form-group input[type="file"]::file-selector-button {
+  /* font-size: 2em; */
+  cursor: pointer;
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  background-color: #0c4b33;
+  padding: 0.5em;
+  color: #f1fff7;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+  color: #44b78b;
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #0c4b33;
+  color: #f1fff7;
+  padding: 1em;
+  /* font-size: 1.2em; */
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn:hover {
+  cursor: pointer;
+  color: #44b78b;
+}
+
+.warn-btn {
+  background-color: red;
+}
+
+.warn-btn:hover {
+  color: #ffb0b0;
+}
+
+.course-modify {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson-add {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+
+.course-modify .btn {
+  margin-bottom: 0.5em;
+}
+
+.video {
+  width: 100%;
+}
+
+.error {
+  background-color: #ff4949;
+  color: white;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error h2 {
+  font-size: 3em;
+}
+
+.error p {
+  font-size: 1.5em;
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-link {
+  margin-top: 1em;
+  color: darkgreen;
+  text-align: center;
+  width: 100%;
+  display: block;
+  text-decoration: underline;
+}
+
+.list-items {
+  font-size: 1.1em;
+  background-color: #ccc;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.list-items > .left {
+  display: flex;
+  gap: 5em;
+  font-size: 1.1em;
+  /* width: 5em; */
+}
+
+.list-remove {
+  color: red;
+  border: none;
+  background-color: inherit;
+  font-size: 0.8em;
+}
+
+.list-remove:hover {
+  cursor: pointer;
+}
+
+.list .btn {
+  font-size: 1.1em;
+  width: 100%;
+}
+
+.profile-nav {
+  display: flex;
+  margin: 1em;
+  gap: 4em;
+  justify-content: center;
+}
+
+.search {
+  background-color: #0c4b33;
+  margin-bottom: 1rem;
+  padding-bottom: 1em;
+}
+
+.pagination {
+  margin: 2em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inactivated {
+  border: none;
+  border-radius: 5px;
+  background-color: #0c4b33;
+  color: #44b78b;
+  padding: 1em;
+  /* font-size: 1.2em; */
+  font-weight: bold;
+  text-align: center;
+}
+
+@media screen and (min-width: 780px) {
+  .card-list {
+    /* display: grid; */
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ncontainer {
+    width: 50%;
+  }
+
+  nav li {
+    display: inline-block;
+  }
+
+  .toggle-nav {
+    display: none;
+  }
+}
+
+.tooltip {
+  display: inline-block;
+  width: 4%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.form-block,
+.form-unit,
+.form-topic {
+  margin-left: 1em;
+}
+
+.form-block button {
+  margin-bottom: 1em;
+}
+
+.removeForm {
+  width: 1.5em;
+}
+
+.removeForm:hover {
+  cursor: pointer;
+}
+
+.unit {
+  margin-left: 1em;
+}
+
+.topic {
+  margin-left: 1em;
+}
+
+#editor {
+  font-size: 1.1rem;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

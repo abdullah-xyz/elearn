@@ -1,0 +1,154 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="ncontainer">
+  <div class="card single">
+    <h3>Request To Update Teacher Profile</h3>
+    <form method="post" class="form">
+      <!-- name -->
+      <div class="form-group">
+        <label for="name">Student's Name:</label>
+        <input type="text" name="name" id="name" value="<%= user.name %>" required />
+      </div>
+      <!-- designation -->
+      <div class="form-group">
+        <label for="designation">Designation:</label>
+        <select
+          name="designation"
+          id="designation"
+          value="<%= user.designation %>"
+          required
+        >
+          <option value="">--Please choose an option--</option>
+          <option value="TGT" <%= user.designation == 'TGT' ? 'selected' : '' %>>TGT</option>
+          <option value="PGT" <%= user.designation == 'PGT' ? 'selected' : '' %>>PGT</option>
+          <option value="Assistant Professor" <%= user.designation == 'Assistant Professor' ? 'selected' : '' %>>Assistant Professor</option>
+          <option value="Associate Professor" <%= user.designation == 'Associate Professor' ? 'selected' : '' %>>Associate Professor</option>
+          <option value="Professor" <%= user.designation == 'Professor' ? 'selected' : '' %>>Professor</option>
+        </select>
+      </div>
+      <!-- qualification -->
+      <div class="form-group">
+        <label for="qualification">Qualification:</label>
+        <input
+          type="text"
+          name="qualification"
+          id="qualification"
+          value="<%= user.qualification %>"
+          required
+        />
+      </div>
+      <!-- institute -->
+      <div class="form-group">
+        <label for="institute">Institute:</label>
+        <input
+          type="text"
+          name="institute"
+          id="institute"
+          value="<%= user.institute %>"
+          required
+        />
+      </div>
+      <!-- department -->
+      <div class="form-group">
+        <label for="department">department:</label>
+        <input
+          type="text"
+          name="department"
+          id="department"
+          value="<%= user.department %>"
+          required
+        />
+      </div>
+
+      <!-- country -->
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <select name="country" id="country" value="<%= user.country %>" required>
+          <option value="">--Please choose an option--</option>
+          <% countries.forEach((country) => {%>
+          <option value="<%= country.isoCode %>" <%= country.isoCode == user.country ? 'selected' : '' %>><%= country.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <!-- state -->
+      <div class="form-group">
+        <label for="state">State:</label>
+        <select name="state" id="state"  required>
+          <option value="">--Please choose an option--</option>
+          <% states.forEach((state) => {%>
+            <option value="<%= state.isoCode %>" <%= state.isoCode == user.state ? 'selected' : '' %>><%= state.name %></option>
+            <% }) %>
+        </select>
+      </div>
+      <!-- city -->
+      <div class="form-group">
+        <label for="city">City:</label>
+        <select name="city" id="city"  required>
+          <option value="">--Please choose an option--</option>
+          <% cities.forEach((city) => {%>
+            <option value="<%= city.name %>" <%= city.name == user.city ? 'selected' : '' %>><%= city.name %></option>
+            <% }) %>
+        </select>
+      </div>
+      <!-- pincode -->
+      <div class="form-group">
+        <label for="pincode">Pincode:</label>
+        <input
+          type="number"
+          name="pincode"
+          id="pincode"
+          value="<%= user.pincode %>"
+          required
+        />
+      </div>
+      <!-- phone -->
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input
+          type="tel"
+          name="phone"
+          id="phone"
+          value="<%= user.phone %>"
+          required
+        />
+      </div>
+      <!-- profile -->
+      <div class="form-group">
+        <label for="profile">Brief Profile:</label>
+        <textarea name="profile" id="profile" cols="30" rows="10">
+<%= user.profile %></textarea
+        >
+      </div>
+      <div class="form-group" id="contacts"><button id="addContact" class="btn" type="button" style="width: 20em;">Add Additional Contact</button></div>
+      <input type="submit" value="Send Update Request" class="btn" />
+    </form>
+  </div>
+</div>
+
+<script src="/public/js/country.js"></script>
+
+<script>
+  const button = document.getElementById('addContact')
+  let buttonCount = 1
+  button.addEventListener('click', () => {
+    const group = document.createElement('div')
+    const type = document.createElement('input')
+    const value = document.createElement('input')
+    group.setAttribute('style', 'display: flex; justify-content: space-evenly; gap: 2em')
+    type.setAttribute('type', 'text')
+    type.setAttribute('name', `type-${buttonCount}`)
+    type.setAttribute("placeholder", 'Label(work email, work phone, etc)')
+    value.setAttribute('type', 'text')
+    value.setAttribute('name', `value-${buttonCount}`)
+    value.setAttribute("placeholder", 'Contact')
+
+
+    group.appendChild(type)
+    group.appendChild(value)
+    button.parentElement.insertBefore(group, button)
+
+    buttonCount++
+  })
+</script>
+
+<%-include('../partials/footer.ejs') %>

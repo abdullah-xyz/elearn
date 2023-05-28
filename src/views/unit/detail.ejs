@@ -1,0 +1,35 @@
+<%- include('../partials/header.ejs') %>
+
+<div style="padding: 1em"></div>
+<% if(instructor == user.id) { %>
+<a href="/unit/edit/<%= unit.id %>" style="margin-left: 5em" class="btn"
+  >Edit Unit</a
+>
+<% } %>
+<h3 style="text-align: center"><%= unit.name %></h3>
+<hr />
+<div style="display: flex; font-size: 1.2em">
+  <div style="width: 50%">
+    <div class="container">
+      <div style="margin-top: 4em" class="etext unselectable">
+        <%- etext ? etext : 'No Text Content Available' %>
+      </div>
+    </div>
+  </div>
+  <div style="width: 50%; margin-top: 5em">
+    <div class="ncontainer">
+      <% if (unit.lecture) { %>
+      <video class="video" controls controlsList="nodownload">
+        <source src="/unit/lecture/<%= unit.id %>" type="video/mp4" />
+      </video>
+      <% } else { %>
+      <strong>No Lecture Available</strong>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<div id="text" style="display: none"><%= JSON.stringify(unit.text) %></div>
+<input id="tmp" type="hidden" value="<%= JSON.stringify(unit.text) %>" />
+
+<%- include('../partials/footer.ejs') %>

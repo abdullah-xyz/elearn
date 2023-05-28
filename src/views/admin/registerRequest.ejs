@@ -1,0 +1,41 @@
+<%- include('../partials/adminHeader.ejs') %> <% let empty=true %>
+
+<div class="ncontainer" style="margin-top: 2em">
+  <h3>Review Teacher Registration Request</h3>
+  <hr />
+  <br />
+  <div class="card-list">
+    <% requests.forEach(request => { %> <% if (!request.isReviewed) { %><% empty
+    = false %>
+    <a href="/admin/register/<%= request.id %>">
+      <div
+        class="card"
+        style="
+          margin: 2em 0;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <h3><%= request.name %></h3>
+          <div><%= request.designation %></div>
+          <div><%= request.qualification %></div>
+          <div><%= request.institute %></div>
+          <div><%= request.department %></div>
+        </div>
+        <div>
+          <div><%= request.email %></div>
+          <div><%= request.phone %></div>
+        </div>
+      </div>
+    </a>
+    <% } %> <% }) %> <% if (empty) { %>
+
+    <h4>No request to review</h4>
+    <% } %>
+  </div>
+  <!-- </div> -->
+</div>
+
+<%- include('../partials/footer.ejs') %>

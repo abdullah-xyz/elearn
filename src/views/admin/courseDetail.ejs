@@ -1,0 +1,63 @@
+<%- include('../partials/adminHeader.ejs') %>
+<div class="ncontainer list">
+  <h3 style="text-align: center; margin-top: 3em; margin-bottom: 1em">
+    Course Detail
+  </h3>
+  <div class="list-items">
+    <h3>Column Name</h3>
+    <h3>Value</h3>
+  </div>
+  <!-- name -->
+  <div class="list-items">
+    <h3>Course Name</h3>
+    <%= course.name %>
+  </div>
+  <!-- code -->
+  <div class="list-items">
+    <h3>Course Code</h3>
+    <%= course.code %>
+  </div>
+  <!-- instructor -->
+  <div class="list-items">
+    <h3>Instructor Name</h3>
+    <%= course.instructorName %>
+  </div>
+  <!-- description -->
+  <div class="list-items">
+    <h3>Description</h3>
+    <%= course.description ? course.description : 'N/A' %>
+  </div>
+  <!-- registrationFees -->
+  <div class="list-items">
+    <h3>Registraion Fees</h3>
+    &#8377;<%= course.registrationFees %>
+  </div>
+  <!-- certification -->
+  <div class="list-items">
+    <h3>Certification Available</h3>
+    <%= course.certification ? 'Yes' : 'No' %>
+  </div>
+  <!-- certificationFees -->
+  <div class="list-items">
+    <h3>Certification fees</h3>
+    <div style="max-width: 5em">
+      <%= course.certificationFees ? course.certificationFees : 'N/A' %>
+    </div>
+  </div>
+  <!-- level -->
+  <div class="list-items">
+    <h3>Course Level</h3>
+    <%= course.level %>
+  </div>
+  <!-- credit -->
+  <div class="list-items">
+    <h3>Course Credit</h3>
+    <%= course.credit %>
+  </div>
+  <!-- duration -->
+  <div class="list-items">
+    <h3>Course Duration</h3>
+    <%= course.duration %> weeks
+  </div>
+</div>
+<%- include('../partials/footer.ejs') %>

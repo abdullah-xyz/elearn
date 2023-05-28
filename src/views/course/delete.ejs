@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %>
+<div style="text-align: center; margin-top: 5em">
+  Are you sure you want to delete the course '<%= course.title %>' and all the
+  lessons in it?
+  <form method="post">
+    <!-- csrf -->
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+    <input type="submit" value="Confirm" class="btn" />
+  </form>
+</div>
+<%- include('../partials/footer.ejs') %>

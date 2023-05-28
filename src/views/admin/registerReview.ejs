@@ -1,0 +1,105 @@
+<%- include('../partials/adminHeader.ejs') %>
+<div class="ncontainer list">
+  <h3 style="text-align: center; margin-top: 3em; margin-bottom: 1em">
+    Review and Respond to user registration request
+  </h3>
+  <form method="post">
+    <div class="list-items">
+      <h3>Column Name</h3>
+      <h3>Value</h3>
+    </div>
+    <!-- name -->
+    <div class="list-items">
+      <h3>Name</h3>
+      <%= request.name %>
+    </div>
+    <!-- email -->
+    <div class="list-items">
+      <h3>Email</h3>
+      <%= request.email %>
+    </div>
+    <!-- phone -->
+    <div class="list-items">
+      <h3>Phone</h3>
+      <%= request.phone %>
+    </div>
+    <!-- qualification -->
+    <div class="list-items">
+      <h3>Qualification</h3>
+      <%= request.qualification %>
+    </div>
+    <!-- designation -->
+    <div class="list-items">
+      <h3>Designation</h3>
+      <%= request.designation %>
+    </div>
+    <!-- institute -->
+    <div class="list-items">
+      <h3>Institute</h3>
+      <%= request.institute %>
+    </div>
+    <!-- department -->
+    <div class="list-items">
+      <h3>Department</h3>
+      <%= request.department %>
+    </div>
+    <!-- pincode -->
+    <div class="list-items">
+      <h3>Postal Code</h3>
+      <%= request.pincode %>
+    </div>
+    <!-- city -->
+    <div class="list-items">
+      <h3>City</h3>
+      <%= request.city %>
+    </div>
+    <!-- state -->
+    <div class="list-items">
+      <h3>State</h3>
+      <%= request.city %>
+    </div>
+    <!-- city -->
+    <div class="list-items">
+      <h3>City</h3>
+      <%= request.state %>
+    </div>
+    <!-- country -->
+    <div class="list-items">
+      <h3>Country</h3>
+      <%= request.country %>
+    </div>
+    <!-- profile -->
+    <div class="list-items">
+      <h3>Profile</h3>
+      <span style="max-width: 40em"
+        ><%= request.profile ? request.profile : 'N/A' %></span
+      >
+    </div>
+    <!-- accept -->
+    <div class="list-items">
+      <h3>Accept/Reject</h3>
+      <div>
+        <label for="accept">Accept</label>
+        <input
+          type="radio"
+          name="accepted"
+          id="accept"
+          value="accept"
+          checked
+        />
+        <label for="reject">Reject</label>
+        <input type="radio" name="accepted" id="reject" value="reject" />
+      </div>
+    </div>
+    <div class="list-items">
+      <h3>Reviewer's Remark</h3>
+      <textarea name="notes" id="notes" cols="40" rows="10" required></textarea>
+    </div>
+    <!-- error -->
+    <% if (error) { %>
+    <p class="form-error"><%= error %></p>
+    <% } %>
+    <input type="submit" class="btn" value="Accept Request" />
+  </form>
+</div>
+<%- include('../partials/footer.ejs') %>

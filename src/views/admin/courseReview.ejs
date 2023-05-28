@@ -1,0 +1,91 @@
+<%- include('../partials/adminHeader.ejs') %>
+<div class="ncontainer list">
+  <h3 style="text-align: center; margin-top: 3em; margin-bottom: 1em">
+    Review and Respond to course creation request
+  </h3>
+  <form method="post" action="/admin/course-requests/<%= course.id %>">
+    <div class="list-items">
+      <h3>Column Name</h3>
+      <h3>Value</h3>
+    </div>
+    <!-- name -->
+    <div class="list-items">
+      <h3>Course Name</h3>
+      <%= course.name %>
+    </div>
+    <!-- code -->
+    <div class="list-items">
+      <h3>Course Code</h3>
+      <%= course.code %>
+    </div>
+    <!-- instructor -->
+    <div class="list-items">
+      <h3>Instructor Name</h3>
+      <%= course.instructorName %>
+    </div>
+    <!-- description -->
+    <div class="list-items">
+      <h3>Description</h3>
+      <div style="max-width: 35em">
+        <%= course.description ? course.description : 'N/A' %>
+      </div>
+    </div>
+    <!-- registrationFees -->
+    <div class="list-items">
+      <h3>Registraion Fees</h3>
+      &#8377;<%= course.registrationFees %>
+    </div>
+    <!-- certification -->
+    <div class="list-items">
+      <h3>Certification Available</h3>
+      <%= course.certification ? 'Yes' : 'No' %>
+    </div>
+    <!-- certificationFees -->
+    <div class="list-items">
+      <h3>Certification fees</h3>
+      <%= course.certificationFees ? course.certificationFees : 'N/A' %>
+    </div>
+    <!-- level -->
+    <div class="list-items">
+      <h3>Course Level</h3>
+      <%= course.level %>
+    </div>
+    <!-- credit -->
+    <div class="list-items">
+      <h3>Course Credit</h3>
+      <%= course.credit %>
+    </div>
+    <!-- duration -->
+    <div class="list-items">
+      <h3>Course Duration</h3>
+      <%= course.duration %> weeks
+    </div>
+
+    <!-- accept -->
+    <div class="list-items">
+      <h3>Accept/Reject</h3>
+      <div>
+        <label for="accept">Accept</label>
+        <input
+          type="radio"
+          name="accepted"
+          id="accept"
+          value="accept"
+          checked
+        />
+        <label for="reject">Reject</label>
+        <input type="radio" name="accepted" id="reject" value="reject" />
+      </div>
+    </div>
+    <div class="list-items">
+      <h3>Reviewer's Remark</h3>
+      <textarea name="notes" id="notes" cols="40" rows="10" required></textarea>
+    </div>
+    <!-- error -->
+    <% if (error) { %>
+    <p class="form-error"><%= error %></p>
+    <% } %>
+    <input type="submit" class="btn" value="Accept Request" />
+  </form>
+</div>
+<%- include('../partials/footer.ejs') %>

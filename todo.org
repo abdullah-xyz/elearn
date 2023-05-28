@@ -1,0 +1,6 @@
+* CANCELLED merge route and controller
+* DONE convert model to service
+* TODO unit test
+* TODO integ. test
+* DONE check user permission around own course
+* DONE deleting course warn about lesson

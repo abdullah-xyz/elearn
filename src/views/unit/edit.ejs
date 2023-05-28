@@ -1,0 +1,31 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="ncontainer">
+  <div class="card single">
+    <h3>Register</h3>
+
+    <form method="post" enctype="multipart/form-data" class="form">
+      <!-- lecture -->
+      <div class="form-group">
+        <label for="video">Lecture:</label>
+        <input
+          type="file"
+          name="video"
+          id="video"
+          value="<%= unit.lecture %>"
+        />
+      </div>
+      <!-- text -->
+      <div class="form-group">
+        <label>Supplementary Text Content:</label>
+        <textarea id="etext" name="etext" rows="5"><%= unit.text %></textarea>
+        <!-- Create the editor container -->
+      </div>
+      <% if (error) { %>
+      <p class="form-error"><%= error %></p>
+      <% } %>
+      <input type="submit" value="Update" class="btn" />
+    </form>
+  </div>
+</div>
+<%- include('../partials/footer.ejs') %>
